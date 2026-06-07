@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import { Share2, Award, ClipboardList, Sparkles, Coffee, Cpu } from 'lucide-react';
-
-// --- CONFIGURATION ---
-const VIP_CODE = "CVENTVIP2026";
+import { Share2, ClipboardList, Sparkles, Coffee, Cpu } from 'lucide-react';
 
 interface Option {
   key: 'A' | 'B' | 'C' | 'D';
@@ -16,7 +13,7 @@ interface Question {
 }
 
 type PersonaKey = 'A' | 'B' | 'C' | 'D';
-type Step = 'welcome' | 'quiz' | 'results';
+type Step = 'quiz' | 'results';
 
 const quizQuestions: Question[] = [
   {
@@ -126,71 +123,6 @@ function calculatePersona(answers: PersonaKey[]): PersonaKey {
 }
 
 // --- SUB-COMPONENTS ---
-
-function WelcomeStep({
-  onStart,
-}: {
-  onStart: (email: string, isVip: boolean) => void;
-}) {
-  const [email, setEmail] = useState('');
-  const [accessCode, setAccessCode] = useState('');
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const vip =
-      accessCode.trim().toUpperCase() === VIP_CODE ||
-      email.trim().toLowerCase().endsWith('@curatedinfluencer.com');
-    onStart(email.trim().toLowerCase(), vip);
-  };
-
-  return (
-    <form onSubmit={handleSubmit} className="p-6 space-y-5">
-      <div className="text-center space-y-2">
-        <Award className="w-10 h-10 text-blue-400 mx-auto" />
-        <p className="text-sm text-slate-300 leading-relaxed">
-          Answer 5 crisp questions to discover your operational, creative,
-          hospitality, or technical event profile.
-        </p>
-      </div>
-
-      <div className="space-y-4 pt-2">
-        <div>
-          <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
-            Corporate Email
-          </label>
-          <input
-            type="email"
-            required
-            placeholder="name@company.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors"
-          />
-        </div>
-        <div>
-          <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">
-            VIP Access Code{' '}
-            <span className="text-slate-500 font-normal normal-case">(Optional)</span>
-          </label>
-          <input
-            type="text"
-            placeholder="Enter code if invited"
-            value={accessCode}
-            onChange={(e) => setAccessCode(e.target.value)}
-            className="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors uppercase tracking-widest"
-          />
-        </div>
-      </div>
-
-      <button
-        type="submit"
-        className="w-full bg-blue-600 hover:bg-blue-500 active:scale-[0.99] text-white font-semibold py-3 rounded-lg text-sm transition-all shadow-md mt-2"
-      >
-        Start Personality Assessment →
-      </button>
-    </form>
-  );
-}
 
 function QuizStep({
   question,
@@ -346,15 +278,9 @@ function ResultsStep({
 // --- ROOT APP ---
 
 export default function App() {
-  const [step, setStep] = useState<Step>('welcome');
-  const [isVip, setIsVip] = useState(false);
+  const [step, setStep] = useState<Step>('quiz');
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<PersonaKey[]>([]);
-
-  const handleStart = (_email: string, vip: boolean) => {
-    setIsVip(vip);
-    setStep('quiz');
-  };
 
   const handleAnswer = (key: PersonaKey) => {
     const updated = [...answers, key];
@@ -368,10 +294,9 @@ export default function App() {
   };
 
   const handleRetake = () => {
-    setStep('welcome');
+    setStep('quiz');
     setAnswers([]);
     setCurrentQuestion(0);
-    setIsVip(false);
   };
 
   const personaKey = answers.length === quizQuestions.length
@@ -393,8 +318,6 @@ export default function App() {
         </div>
 
         {/* STEP CONTENT */}
-        {step === 'welcome' && <WelcomeStep onStart={handleStart} />}
-
         {step === 'quiz' && (
           <QuizStep
             question={quizQuestions[currentQuestion]}
@@ -407,7 +330,7 @@ export default function App() {
         {step === 'results' && (
           <ResultsStep
             persona={personas[personaKey]}
-            isVip={isVip}
+            isVip={false}
             onRetake={handleRetake}
           />
         )}
