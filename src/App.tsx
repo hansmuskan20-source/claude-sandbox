@@ -18,52 +18,52 @@ type Step = 'quiz' | 'results';
 const quizQuestions: Question[] = [
   {
     id: 1,
-    text: "Which stakeholder feedback means the most to you?",
+    text: "Post-event feedback just landed in your inbox. Which message makes you feel like you nailed it?",
     options: [
-      { key: 'A', text: "The operations were flawless and everything ran perfectly on time." },
-      { key: 'B', text: "The creative concepts and social media buzz were incredible." },
-      { key: 'C', text: "The premium hospitality made our top VIP guests feel valued." },
-      { key: 'D', text: "The digital data tracking captured our highest-quality leads ever." },
+      { key: 'A', text: "\"Everything ran like clockwork — not a single hiccup.\"" },
+      { key: 'B', text: "\"Your activation was everywhere on LinkedIn. The buzz was real.\"" },
+      { key: 'C', text: "\"Our most-valued attendees couldn't stop talking about how relatable the session content was.\"" },
+      { key: 'D', text: "\"The lead quality from this event was the best we've ever seen.\"" },
     ],
   },
   {
     id: 2,
-    text: "You need to drive a 40% boost in event engagement and leads. Your move?",
+    text: "You need to drive a 40% jump in event engagement. What's your first move?",
     options: [
-      { key: 'A', text: "Guarantee an ironclad, friction-free physical crowd flow." },
-      { key: 'B', text: "Build high-visibility content hubs that drive social sharing." },
-      { key: 'C', text: "Organize exclusive, high-end executive roundtable dinners." },
-      { key: 'D', text: "Deploy smart digital tracking to capture automated intent data." },
+      { key: 'A', text: "Map every touchpoint from venue, flow, to signage and eliminate friction." },
+      { key: 'B', text: "Create a content moment so good, attendees share it without being asked." },
+      { key: 'C', text: "Design an invite-only experience that makes the right people feel seen." },
+      { key: 'D', text: "Deploy smart tracking to capture real-time intent signals across the event." },
     ],
   },
   {
     id: 3,
-    text: "You get a 10-minute break during a major conference. You...",
+    text: "It's day one of a major conference — back-to-back sessions, a packed agenda, and barely a moment to breathe. You finally get 10 minutes to yourself. What are you doing?",
     options: [
-      { key: 'A', text: "Cross-check tomorrow's vendor and transport schedules." },
-      { key: 'B', text: "Record a quick video sharing your insights online." },
-      { key: 'C', text: "Meet a key regional partner to ensure they are happy." },
-      { key: 'D', text: "Monitor live check-in analytics on your event platform." },
+      { key: 'A', text: "Confirming tomorrow's vendor logistics and run-of-show." },
+      { key: 'B', text: "Filming a quick take on a trend you just heard on stage — straight to company socials." },
+      { key: 'C', text: "Checking in with a key partner to make sure they're having a good time." },
+      { key: 'D', text: "Pulling up live registration data to see what's converting." },
     ],
   },
   {
     id: 4,
-    text: "What excites you most about the APAC event market?",
+    text: "What excites you most about the APAC events market right now?",
     options: [
-      { key: 'A', text: "World-class venue infrastructures and seamless transport links." },
-      { key: 'B', text: "Bold opportunities for disruptive and creative brand storytelling." },
-      { key: 'C', text: "The legendary global standard for premium guest hospitality." },
-      { key: 'D', text: "Rapid adoption of AI and real-time data tech." },
+      { key: 'A', text: "World-class venues and infrastructure that make flawless execution possible." },
+      { key: 'B', text: "A cultural appetite for bold, unexpected brand storytelling." },
+      { key: 'C', text: "The gold standard for relationship-driven, high-touch hospitality." },
+      { key: 'D', text: "How fast the region is adopting AI and event tech." },
     ],
   },
   {
     id: 5,
-    text: "At the evening networking drinks, your main focus is...",
+    text: "The last session just wrapped and networking hour is in full swing — you've got the whole floor to work with. What are you actually doing?",
     options: [
-      { key: 'A', text: "Reviewing today's operational metrics to optimize tomorrow." },
-      { key: 'B', text: "Collaborating with speakers on future industry content." },
-      { key: 'C', text: "Ensuring guests feel welcomed, comfortable, and connected." },
-      { key: 'D', text: "Exchanging digital contact profiles via fast QR scans." },
+      { key: 'A', text: "Doing a quiet walk-through of the venue, mentally logging what to fix for tomorrow." },
+      { key: 'B', text: "Pulling aside a speaker to talk about turning their session into content for the brand's socials." },
+      { key: 'C', text: "Floating through the room, making sure every attendee feels personally looked after — no one stands alone on your watch." },
+      { key: 'D', text: "Keeping an eye on which conversations are heating up and making sure the right people get introduced to each other." },
     ],
   },
 ];
@@ -78,30 +78,30 @@ interface Persona {
 
 const personas: Record<PersonaKey, Persona> = {
   A: {
-    title: "The Operational General",
-    badge: "Master of Logistics",
-    desc: "The backbone of APAC's world-class MICE reputation. You turn logistical complexity into smooth clockwork execution. Where others see chaos, you see a checklist waiting to be completed.",
+    title: "The Ops Mastermind",
+    badge: "Turning chaos into clockwork",
+    desc: "You're the reason events actually work. While everyone else is caught up in the moment, you've already planned for the moment after that — and the one after that. Flawless execution isn't a goal for you, it's a baseline.\n\n\"If it's not in the run sheet, it doesn't exist.\"",
     icon: <ClipboardList className="w-16 h-16 text-blue-400" />,
     color: "text-blue-400",
   },
   B: {
-    title: "The Narrative Alchemist",
-    badge: "Content Visionary",
-    desc: "You transform traditional corporate setups into high-engagement, viral LinkedIn content goldmines. Your events don't just happen — they trend.",
+    title: "The Story Maker",
+    badge: "Making people stop the scroll",
+    desc: "You see events as content waiting to happen. You know that the best brand moments aren't planned in a brief — they're captured live, told authentically, and felt long after the last slide goes dark.\n\n\"Every session is a story. Every hallway is a set.\"",
     icon: <Sparkles className="w-16 h-16 text-purple-400" />,
     color: "text-purple-400",
   },
   C: {
-    title: "The Concierge Elite",
-    badge: "Hospitality Champion",
-    desc: "You prioritize high-end relationship capital, ensuring regional executives experience flawless hospitality. Every guest leaves feeling like the most important person in the room.",
+    title: "The Relationship Builder",
+    badge: "Making everyone feel like a VIP",
+    desc: "You understand something most people miss: the highest ROI at any event is the room feeling right. You read people, anticipate needs, and create experiences that make attendees feel genuinely looked after.\n\n\"The best events aren't remembered for the agenda — they're remembered for how they made you feel.\"",
     icon: <Coffee className="w-16 h-16 text-emerald-400" />,
     color: "text-emerald-400",
   },
   D: {
-    title: "The Digital Architect",
-    badge: "Data & ROI Strategist",
-    desc: "You live in the future, engineering smart digital layers, advanced analytics, and proving absolute event ROI. If it can't be measured, it didn't happen.",
+    title: "The Data Driver",
+    badge: "Turning registrations into revenue intel",
+    desc: "You know that gut feel is good, but data is better. You're the one connecting event activity to pipeline, building dashboards while others debrief, and making sure every dollar spent is a dollar accounted for.\n\n\"If it can't be measured, it can't be optimised.\"",
     icon: <Cpu className="w-16 h-16 text-cyan-400" />,
     color: "text-cyan-400",
   },
@@ -186,7 +186,7 @@ function ResultsStep({
 }) {
   const [copied, setCopied] = useState(false);
 
-  const shareText = `I just discovered my B2B Event Personality is "${persona.title}" ahead of Cvent Accelerate Singapore 2026! Take the quiz to unlock yours.`;
+  const shareText = `I just discovered my Events Personality Type is "${persona.title}" ahead of Cvent Accelerate Singapore 2026! Take the quiz to find yours.`;
 
   const handleShare = () => {
     const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}&summary=${encodeURIComponent(shareText)}`;
@@ -220,7 +220,14 @@ function ResultsStep({
       </div>
 
       {/* Description */}
-      <p className="text-sm text-slate-300 leading-relaxed px-2">{persona.desc}</p>
+      {persona.desc.split('\n\n').map((para, i) => (
+        <p
+          key={i}
+          className={`text-sm leading-relaxed px-2 ${i === 1 ? 'text-slate-400 italic' : 'text-slate-300'}`}
+        >
+          {para}
+        </p>
+      ))}
 
       {/* VIP badge */}
       {isVip && (
@@ -313,8 +320,11 @@ export default function App() {
             Cvent Accelerate Singapore 2026
           </p>
           <h1 className="text-lg font-bold tracking-tight text-white">
-            MICE &amp; B2B Event Personality Quiz
+            Pick Your Events Personality Type
           </h1>
+          <p className="text-xs text-blue-200 mt-1">
+            Answer 5 quick questions to find out what kind of events professional you are.
+          </p>
         </div>
 
         {/* STEP CONTENT */}
