@@ -107,15 +107,18 @@ const personas: Record<PersonaKey, Persona> = {
   },
 };
 
+// Q1, Q2, Q5 are most diagnostic — weighted 2×. Q3, Q4 are 1×. Max score = 7.
+const QUESTION_WEIGHTS = [2, 2, 1, 1, 2];
+
 function calculatePersona(answers: PersonaKey[]): PersonaKey {
-  const counts: Record<PersonaKey, number> = { A: 0, B: 0, C: 0, D: 0 };
-  answers.forEach((ans) => counts[ans]++);
+  const scores: Record<PersonaKey, number> = { A: 0, B: 0, C: 0, D: 0 };
+  answers.forEach((ans, i) => { scores[ans] += QUESTION_WEIGHTS[i]; });
 
   let top: PersonaKey = 'A';
   let max = 0;
-  (Object.keys(counts) as PersonaKey[]).forEach((key) => {
-    if (counts[key] > max) {
-      max = counts[key];
+  (Object.keys(scores) as PersonaKey[]).forEach((key) => {
+    if (scores[key] > max) {
+      max = scores[key];
       top = key;
     }
   });
